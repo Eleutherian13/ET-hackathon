@@ -1,0 +1,36 @@
+.vscode/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+
+# Environment files
+.env
+.env.*
+backend/.env
+backend/.env.*
+
+# Node / frontend
+node_modules/
+dist/
+frontend/node_modules/
+frontend/dist/
+
+# Generated data and runtime files
+backend/chroma_db/
+backend/uploads/
+*.sqlite3
+*.db
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
