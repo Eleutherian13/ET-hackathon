@@ -3,7 +3,7 @@ import uuid
 import math
 import logging
 from datetime import datetime
-from typing import List, Dict
+from typing import List, Dict, Optional
 
 from database.connection import get_db
 from services.llm_client import call_claude
