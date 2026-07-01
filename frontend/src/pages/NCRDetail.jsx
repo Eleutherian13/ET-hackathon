@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import api from "../api/client.js";
 import LoadingSpinner from "../components/LoadingSpinner.jsx";
 import SeverityBadge from "../components/SeverityBadge.jsx";
+import { Printer } from "lucide-react";
 
 export default function NCRDetail() {
   const { ncrId } = useParams();
@@ -77,9 +78,9 @@ export default function NCRDetail() {
           </span>
           <button
             onClick={() => window.print()}
-            className="bg-slate-700 hover:bg-slate-800 text-white text-xs font-medium px-3 py-1.5 rounded-lg transition-colors"
+            className="flex items-center gap-1.5 bg-slate-700 hover:bg-slate-800 text-white text-xs font-medium px-3 py-1.5 rounded-lg transition-colors"
           >
-            🖨 Export to PDF
+            <Printer size={14} strokeWidth={1.75} /> Export to PDF
           </button>
         </div>
       </div>

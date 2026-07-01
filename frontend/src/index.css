@@ -1,16 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@media print {
-  nav,
-  .no-print {
-    display: none !important;
+/* ─── Base ─────────────────────────────────────────────────────────────────── */
+@layer base {
+  :root {
+    --bg-primary: #F8FAFC;
+    --bg-secondary: #ffffff;
+    --text-primary: #0F172A;
+    --text-secondary: #475569;
+    --border-color: #E2E8F0;
+    --glass-bg: rgba(255, 255, 255, 0.65);
+    --glass-border: rgba(255, 255, 255, 0.5);
+  }
+
+  html {
+    background-color: var(--bg-primary);
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body {
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
+    font-family: 'Inter', system-ui, sans-serif;
   }
 }
 
-@media print {
-  .no-print {
-    display: none !important;
+/* ─── Components ───────────────────────────────────────────────────────────── */
+@layer components {
+  .card {
+    @apply bg-white rounded-2xl border border-slate-200;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
   }
+
+  .card-hover {
+    @apply transition-all duration-200;
+  }
+  .card-hover:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 25px -5px rgba(0,0,0,0.08), 0 10px 10px -5px rgba(0,0,0,0.04);
+    border-color: rgba(20,184,166,0.2);
+  }
+
+  .glass {
+    background: rgba(255,255,255,0.65);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.5);
+  }
+
+  .glass-panel {
+    @apply glass rounded-2xl;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.8);
+  }
+
+  .btn-primary {
+    @apply font-semibold px-5 py-2.5 rounded-full text-sm text-white;
+    background: linear-gradient(135deg, #14B8A6, #0891b2);
+    box-shadow: 0 4px 16px rgba(20,184,166,0.3);
+    transition: all 0.2s ease;
+  }
+  .btn-primary:hover {
+    transform: scale(1.04);
+    box-shadow: 0 6px 24px rgba(20,184,166,0.45);
+  }
+  .btn-primary:active { transform: scale(0.97); }
+
+  .btn-secondary {
+    @apply font-semibold px-5 py-2.5 rounded-full text-sm bg-white text-slate-900 border border-slate-200;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    transition: all 0.2s ease;
+  }
+  .btn-secondary:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    border-color: rgba(20,184,166,0.3);
+  }
+  .btn-secondary:active { transform: scale(0.97); }
+
+  .blueprint-grid {
+    background-image:
+      linear-gradient(to right, rgba(100,116,139,0.09) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(100,116,139,0.09) 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
+
+  .page-wrapper {
+    @apply max-w-6xl mx-auto space-y-8;
+  }
+
+  /* Skeleton shimmer */
+  .skeleton {
+    background: linear-gradient(90deg, #F1F5F9 25%, #E2E8F0 50%, #F1F5F9 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.8s infinite;
+    border-radius: 10px;
+  }
+}
+
+/* ─── Keyframes ────────────────────────────────────────────────────────────── */
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@keyframes shimmer-sweep {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+.animate-shimmer { animation: shimmer-sweep 1.2s ease-in-out; }
+
+@keyframes pulse-glow {
+  0%,100% { box-shadow: 0 0 0 0 rgba(20,184,166,0); }
+  50%      { box-shadow: 0 0 0 6px rgba(20,184,166,0.15); }
+}
+.animate-pulse-glow { animation: pulse-glow 2.5s ease-in-out infinite; }
+
+@media print {
+  nav, .no-print { display: none !important; }
 }
